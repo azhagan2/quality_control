@@ -11,11 +11,15 @@ from google.oauth2.service_account import Credentials
 
 today = datetime.now().strftime("%d-%m-%Y")
 
+download_folder = "Downloads"
+
 file_name = None
 
-for file in os.listdir():
+for file in os.listdir(download_folder):
     if today in file and file.endswith(".csv"):
-        file_name = file
+        file_name = os.path.join(
+            download_folder,
+            file)
         break
 
 if not file_name:
@@ -151,3 +155,17 @@ worksheet.append_rows(
 print(
     "Google sheet updated"
 )
+
+try:
+
+    os.remove(file_name)
+
+    print(
+        f"Deleted: {file_name}"
+    )
+
+except Exception as e:
+
+    print(
+        f"Delete failed: {e}"
+    )
