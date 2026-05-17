@@ -1,0 +1,23 @@
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    env:
+      GMAIL_CREDENTIALS: ${{ secrets.GMAIL_CREDENTIALS }}
+      GMAIL_TOKEN: ${{ secrets.GMAIL_TOKEN }}
+      SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - run: python bootstrap.py
+
+      - run: python gmail_download.py
+
+      - run: python python_etl.py
