@@ -16,6 +16,7 @@ download_folder = "Downloads"
 file_name = None
 
 for file in os.listdir(download_folder):
+    print("Found attachment:", repr(file))
     if today in file and file.endswith(".csv"):
         file_name = os.path.join(
             download_folder,
