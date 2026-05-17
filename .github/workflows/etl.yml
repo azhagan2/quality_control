@@ -3,6 +3,10 @@ name: Quality ETL
 on:
   workflow_dispatch:
 
+  push:
+    branches:
+      - main
+
   schedule:
     - cron: '0 18 * * *'
 
@@ -27,5 +31,3 @@ jobs:
       - run: python bootstrap.py
 
       - run: python gmail_download.py
-
-      - run: python python_etl.py
