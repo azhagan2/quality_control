@@ -31,3 +31,5 @@ jobs:
       - run: python bootstrap.py
 
       - run: python gmail_download.py
+
+      - run: python python_etl.py
