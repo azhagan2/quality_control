@@ -102,15 +102,27 @@ for msg in messages:
                 attachment['data']
             )
 
+            # create folder if missing
+            os.makedirs(
+                "Downloads",
+                exist_ok=True
+            )
+
+            path = os.path.join(
+                "Downloads",
+                filename
+            )
+
             with open(
-                f"Downloads/{filename}",
+                path,
                 'wb'
             ) as f:
+
                 f.write(data)
 
             print(
                 "Saved:",
-                filename
+                path
             )
 
             found = True
