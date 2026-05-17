@@ -9,6 +9,18 @@ from google.oauth2.service_account import Credentials
 # Find today's downloaded file
 # -----------------------------
 
+
+print("Current folder:", os.getcwd())
+
+print("Root files:")
+print(os.listdir())
+
+if os.path.exists("Downloads"):
+    print("Downloads folder exists")
+    print(os.listdir("Downloads"))
+else:
+    print("Downloads folder missing")
+
 today = datetime.now().strftime("%d-%m-%Y")
 
 download_folder = "Downloads"
