@@ -1,7 +1,7 @@
 import pandas as pd
 import re
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -21,7 +21,7 @@ if os.path.exists("Downloads"):
 else:
     print("Downloads folder missing")
 
-today = datetime.now().strftime("%d-%m-%Y")
+today = (datetime.now() - timedelta(days=1)).strftime("%d-%m-%Y")
 
 download_folder = "Downloads"
 

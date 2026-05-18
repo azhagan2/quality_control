@@ -1,6 +1,6 @@
 import os
 import base64
-from datetime import datetime
+from datetime import datetime, timedelta
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -47,8 +47,8 @@ print("Found:", len(messages))
 if not messages:
     print("No mails found")
     exit()
-
-today = datetime.now().strftime("%d-%m-%Y")
+    
+today = (datetime.now() - timedelta(days=1)).strftime("%d-%m-%Y")
 
 print("Looking for:", today)
 
