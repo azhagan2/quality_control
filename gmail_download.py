@@ -9,6 +9,7 @@ from googleapiclient.discovery import build
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 creds = None
+#No creds
 
 if os.path.exists("token.json"):
     creds = Credentials.from_authorized_user_file(
