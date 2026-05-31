@@ -1,3 +1,5 @@
+from fileinput import filename
+
 import pandas as pd
 import re
 import os
@@ -128,8 +130,12 @@ for row in rows:
     # -------------------------
 
     if "100sh" in first_col.lower():
-
         current_metric = "eb100sh"
+    elif "rpm" in first_col.lower():
+        current_metric = "Avg spndl rpm"
+    elif "gpss" in first_col.lower():
+        current_metric = "GPSS"
+
 
         print("Metric:", current_metric)
 
